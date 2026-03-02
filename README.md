@@ -8,4 +8,4 @@ A little about me:
 - I am taking STATS 220 because I was interested in Statistics but I may change my major next semester.
 - I am interested in learning about data analysis and interpretation.
 
-A meme that captures how I currently feel about my university studies is ![](https://tenor.com/jPvrBK1P04c.gif)
+A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
