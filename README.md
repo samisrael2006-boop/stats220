@@ -15,8 +15,7 @@
 **This is one of my proudest discoveriess on the Internet**
 []https://lekuluent.et
 
-*POV how i felt after stumbling across that website:*
-![]https://media1.tenor.com/m/2Sdmne5w8x0AAAAC/ishowspeed-ishowspeed-tongue.gif
+*POV how i felt after stumbling across that website:* ![](https://media1.tenor.com/m/2Sdmne5w8x0AAAAC/ishowspeed-ishowspeed-tongue.gif)
 
 This is my repo for STATS 220.
 
