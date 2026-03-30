@@ -72,7 +72,7 @@ The bar chart below shows the type of car respondents said they saw most often o
 
 ```{r}
 latest_data %>%
-  ggplot(aes(x = fct_infreq(car_type))) +
+  ggplot(aes(x = car_type)) +
   geom_bar(fill = "#8ecae6") +
   labs(
     title = "Most Common Car Type Seen on the Way to UOA",
@@ -88,7 +88,7 @@ The bar chart below shows the fuel type respondents noticed most often on their 
 
 ```{r}
 latest_data %>%
-  ggplot(aes(x = fct_infreq(fuel_type))) +
+  ggplot(aes(x = fuel_type)) +
   geom_bar(fill = "#90be6d") +
   labs(
     title = "Most Common Fuel Type Noticed on the Way to UOA",
@@ -104,7 +104,7 @@ The bar chart below shows the car brand respondents noticed most often during th
 
 ```{r}
 latest_data %>%
-  ggplot(aes(x = fct_infreq(car_brand))) +
+  ggplot(aes(x = car_brand)) +
   geom_bar(fill = "#f4a261") +
   labs(
     title = "Most Noticed Car Brand on the Way to UOA",
@@ -117,4 +117,3 @@ latest_data %>%
 ### Overall Comment
 
 Overall, the results suggest that **`r most_common_car_type`** cars were the most frequently noticed by respondents. In addition, **`r most_common_fuel`** was the most common fuel type recorded in the data. The average of **`r round(mean_suv, 2)` SUVs** per trip shows that SUVs were a common part of the traffic observed on the way to UOA.
-e data. The average of **`r round(mean_suv, 2)` SUVs** per trip shows that SUVs were a common part of the traffic observed on the way to UOA.
