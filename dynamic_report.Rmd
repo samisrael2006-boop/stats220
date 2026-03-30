@@ -33,7 +33,7 @@ This dynamic report summarises responses collected about the types of cars notic
 The purpose of this report is to identify patterns in the data and present them using summary values and bar charts.
 
 ```{r}
-logged_data <- read_csv("cars_data.csv")
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSxuAc-CUx97RWnvu6T50hQ5_EkZjL3Y14S-f-XdGCF4JgZOl0hbgUY3qVhf_yIYLOPOis9tRbZvOkI/pub?gid=1275018942&single=true&output=csv")
 
 latest_data <- logged_data %>%
   rename(
@@ -117,3 +117,4 @@ latest_data %>%
 ### Overall Comment
 
 Overall, the results suggest that **`r most_common_car_type`** cars were the most frequently noticed by respondents. In addition, **`r most_common_fuel`** was the most common fuel type recorded in the data. The average of **`r round(mean_suv, 2)` SUVs** per trip shows that SUVs were a common part of the traffic observed on the way to UOA.
+e data. The average of **`r round(mean_suv, 2)` SUVs** per trip shows that SUVs were a common part of the traffic observed on the way to UOA.
