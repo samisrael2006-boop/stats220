@@ -5,23 +5,115 @@ output: html_fragment
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
-
+library(tidyverse)
 ```
+
 
 ```{css}
+h2 {
+  color: #1d3557;
+  font-family: Arial, sans-serif;
+}
 
+h3 {
+  color: #457b9d;
+  font-family: Arial, sans-serif;
+}
+
+p {
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
 ```
 
-## What's going on with this data?
+## Tracking Cars Seen on the Way to UOA
 
-You need to change the contents of this Rmd! Replace the R code and markdown give below in this template document.
+This dynamic report summarises responses collected about the types of cars noticed on trips to UOA. The data focuses on the type of car seen most often, the number of SUVs seen, the fuel type of the cars noticed most often and the car brand noticed most often.
+
+The purpose of this report is to identify patterns in the data and present them using summary values and bar charts.
 
 ```{r}
-pets <- c("cat", "dog", "turtle", "rabbit")
-best_pet <- pets[1]
+logged_data <- read_csv("cars_data.csv")
 
+latest_data <- logged_data %>%
+  rename(
+    car_type  = `What type of car did you see most often on the way to UOA`,
+    suv_count = `How many SUV's did you see on your trip to UOA`,
+    fuel_type = `Which fuel type do you notice most often on your trip to UOA`,
+    car_brand = `What car brand did you notice most on your trip to UOA`
+  )
 ```
 
-The best pet to have is a `r best_pet` of course!
+### Summary of the Data
 
-![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
+```{r}
+mean_suv <- mean(latest_data$suv_count, na.rm = TRUE)
+max_suv  <- max(latest_data$suv_count, na.rm = TRUE)
+min_suv  <- min(latest_data$suv_count, na.rm = TRUE)
+
+most_common_car_type <- latest_data %>%
+  count(car_type, sort = TRUE) %>%
+  slice(1) %>%
+  pull(car_type)
+
+most_common_fuel <- latest_data %>%
+  count(fuel_type, sort = TRUE) %>%
+  slice(1) %>%
+  pull(fuel_type)
+```
+
+On average, respondents saw **`r round(mean_suv, 2)` SUVs** on their trip to UOA. The highest number of SUVs recorded in a single trip was **`r max_suv`**, while the lowest was **`r min_suv`**.
+
+The most commonly seen car type was **`r most_common_car_type`**, and the most commonly noticed fuel type was **`r most_common_fuel`**.
+
+### Most Common Car Type
+
+The bar chart below shows the type of car respondents said they saw most often on the way to UOA.
+
+```{r}
+latest_data %>%
+  ggplot(aes(x = fct_infreq(car_type))) +
+  geom_bar(fill = "#8ecae6") +
+  labs(
+    title = "Most Common Car Type Seen on the Way to UOA",
+    x = "Car Type",
+    y = "Number of Responses"
+  ) +
+  theme_minimal()
+```
+
+### Most Common Fuel Type
+
+The bar chart below shows the fuel type respondents noticed most often on their trip to UOA.
+
+```{r}
+latest_data %>%
+  ggplot(aes(x = fct_infreq(fuel_type))) +
+  geom_bar(fill = "#90be6d") +
+  labs(
+    title = "Most Common Fuel Type Noticed on the Way to UOA",
+    x = "Fuel Type",
+    y = "Number of Responses"
+  ) +
+  theme_minimal()
+```
+
+### Most Noticed Car Brand
+
+The bar chart below shows the car brand respondents noticed most often during their trip to UOA.
+
+```{r}
+latest_data %>%
+  ggplot(aes(x = fct_infreq(car_brand))) +
+  geom_bar(fill = "#f4a261") +
+  labs(
+    title = "Most Noticed Car Brand on the Way to UOA",
+    x = "Car Brand",
+    y = "Number of Responses"
+  ) +
+  theme_minimal()
+```
+
+### Overall Comment
+
+Overall, the results suggest that **`r most_common_car_type`** cars were the most frequently noticed by respondents. In addition, **`r most_common_fuel`** was the most common fuel type recorded in the data. The average of **`r round(mean_suv, 2)` SUVs** per trip shows that SUVs were a common part of the traffic observed on the way to UOA.
